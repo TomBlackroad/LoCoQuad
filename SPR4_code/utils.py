@@ -22,9 +22,9 @@ for i in range(n_acc):
         logging.debug('The botfile is corrupted...fix it to obtain optimum results!')
 
 
-	if(types = mbl_bots.ACC):
+	if(types == mbl_bots.ACC):
 		return (actuators)
-	else if(types = mbl_bots.SEN):
+	else if(types == mbl_bots.SEN):
 		return (sensors)
 	else:
 		return (actuators, sensors)
