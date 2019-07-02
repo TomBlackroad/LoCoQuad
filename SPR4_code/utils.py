@@ -23,11 +23,20 @@ for i in range(n_acc):
         logging.debug('The botfile is corrupted...fix it to obtain optimum results!')
 
 
-
-
 	if(types = mbl_bots.ACC):
 		return (actuators)
 	else if(types = mbl_bots.SEN):
 		return (sensors)
 	else:
 		return (actuators, sensors)
+
+
+def genDictionary(list1, list2):
+	dic = {}
+	if len(list2) == len(list1):
+		for i in range(len(list1)):
+			dic[list1[i]] = list2[i]
+	return dic
+
+def getDelay(speed):
+	return speed/mbl_bots.SPEED_FACTOR
