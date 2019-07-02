@@ -4,6 +4,7 @@ import math
 import smbus
 import sys
 import utils
+import mbl_bots
 
 
 from servo_hat_driver import PCA9685
