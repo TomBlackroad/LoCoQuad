@@ -6,7 +6,6 @@ from sensor import Sensor
 def file2bot(file, types):
 	with open(file) as data:
 	    lines = [i.strip().split() for i in data]
-    actuators = [Actuator(lines[i+1]) for i in range(lines[0]) if lengh(lines[i+1]) is 8]
 
 n_acc = int(lines[0][0])
 for i in range(n_acc):
