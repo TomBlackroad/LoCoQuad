@@ -5,6 +5,7 @@ import smbus
 import sys
 import utils
 import mbl_bots
+import logging
 
 
 from servo_hat_driver import PCA9685
@@ -16,17 +17,20 @@ class Robot(object):
 		(self.actuators, self.sensors) = utils.file2bot(file, mbl_bots.BOTH)
 		self.pwm = PCA9685(0x40, debug=False)
 		self.pwm.setPWMFreq(50)
-		names_acc = [self.actuators[i].name for i in len(actuators)]
-		names_sen = [self.sensors[i].name for i in len(sensors)]
-		idx_acc = [i for i in len(actuators)]
-		idx_sen = [i for i in len(sensors)]
-		self.acc_dic = utils.genDictionary(name_acc, idx_acc)
-		self.sen_dic = utils.genDictionary(name_sen, idx_sen)
+		print("My name is: ", self.actuators[0].name)
+		self.names_acc = [self.actuators[i].name for i in range(len(self.actuators))]
+		self.names_sen = [self.sensors[i].name for i in range(len(self.sensors))]
+		self.idx_acc = [i for i in range(len(self.actuators))]
+		self.idx_sen = [i for i in range(len(self.sensors))]
+		self.acc_dic = utils.genDictionary(self.names_acc, self.idx_acc)
+		self.sen_dic = utils.genDictionary(self.names_sen, self.idx_sen)
+		print(self.acc_dic)
 
-	def moveAcc(self,adress,pos):
+	def moveAcc(self,name,pos):
 		poss = pos*mbl_bots.SCALE_ACC + mbl_bots.CNT_ACC
-		if (poss > actuators[int(self.acc_dic[name])].max): poss = actuators[int(self.acc_dic[name])].max
-		if (poss < actuators[int(self.acc_dic[name])].min): poss = actuators[int(self.acc_dic[name])].min
-		self.pwm.setServoPulse(actuators[int(self.acc_dic[name])].adress, pos)
+		if (poss > self.actuators[int(self.acc_dic[name])].max): poss = self.actuators[int(self.acc_dic[name])].max
+		if (poss < self.actuators[int(self.acc_dic[name])].min): poss = self.actuators[int(self.acc_dic[name])].min
+		self.pwm.setServoPulse(int(self.actuators[int(self.acc_dic[name])].adress), poss)
+		print('Moving ', name ,'to', poss )
 
 

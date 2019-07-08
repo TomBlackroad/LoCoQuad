@@ -3,6 +3,8 @@ import time
 import math
 import smbus
 import sys
+import utils
+import logging
 
 from robot import Robot
 from servo_hat_driver import PCA9685
@@ -16,9 +18,10 @@ class SPR4(Robot):
 
 
   def arise(self, behaviour):
+    time.sleep(2)
     start_time = time.time()
-    while ((time.time()-start_time)<10):
-      self.walkFront(100, 0)
+    while ((time.time()-start_time)<60):
+      self.walkFront(5, 0.75)
     start_time = time.time()
     while True:
       self.stand()
@@ -33,44 +36,46 @@ class SPR4(Robot):
     super(SPR4,self).moveAcc("FLR", self.home)
     super(SPR4,self).moveAcc("FLL", self.home)
     super(SPR4,self).moveAcc("BLR", self.home)
-    super(SPR4,self).moveAcc("BLL", self.home)  
+    super(SPR4,self).moveAcc("BLL", self.home)
+    time.sleep(1) 
 
   def walkFront(self, speed, rand):
     ms = utils.getDelay(speed)
     logging.debug("SPR4 is Walking forward")
+    print('SPR4 is walking forward...')
 
-    super(SPR4,self).moveAcc("RLL", self.home + 50)
-    super(SPR4,self).moveAcc("FRL", self.home + 30)
+    super(SPR4,self).moveAcc('BLL', self.home + 50*rand)
+    super(SPR4,self).moveAcc('FLR', self.home - 30*rand)
     time.sleep(ms)
-    super(SPR4,self).moveAcc("FRS", self.home - 45)
-    super(SPR4,self).moveAcc("RRS", self.home + 60)
+    super(SPR4,self).moveAcc("FSR", self.home - 45*rand)
+    super(SPR4,self).moveAcc("BSR", self.home + 60*rand)
     time.sleep(ms)
-    super(SPR4,self).moveAcc("FRL", self.home + 80)
-    super(SPR4,self).moveAcc("RLL", self.home + 60)
-    super(SPR4,self).moveAcc("FRL", self.home + 80)
-    super(SPR4,self).moveAcc("RLL", self.home + 50)
+    super(SPR4,self).moveAcc("FLR", self.home - 80*rand)
+    super(SPR4,self).moveAcc("BLL", self.home + 60*rand)
+    super(SPR4,self).moveAcc("FLR", self.home - 80*rand)
+    super(SPR4,self).moveAcc("BLL", self.home + 50*rand)
     time.sleep(ms)
-    super(SPR4,self).moveAcc("RLS", self.home + 30)
-    super(SPR4,self).moveAcc("FRS", self.home + 20)
+    super(SPR4,self).moveAcc("BSL", self.home + 30*rand)
+    super(SPR4,self).moveAcc("FSR", self.home + 20*rand)
     time.sleep(ms)
-    super(SPR4,self).moveAcc("RLL", self.home + 60)
-    super(SPR4,self).moveAcc("FLL", self.home + 80)
-    super(SPR4,self).moveAcc("RLL", self.home - 20)
-    super(SPR4,self).moveAcc("FLL", self.home - 40)
+    super(SPR4,self).moveAcc("BLL", self.home + 60*rand)
+    super(SPR4,self).moveAcc("FLL", self.home + 80*rand)
+    super(SPR4,self).moveAcc("BLL", self.home + 20*rand)
+    super(SPR4,self).moveAcc("FLL", self.home + 40*rand)
     time.sleep(ms)
-    super(SPR4,self).moveAcc("FLS", self.home + 60)
-    super(SPR4,self).moveAcc("RLS", self.home - 50)
+    super(SPR4,self).moveAcc("FSL", self.home + 60*rand)
+    super(SPR4,self).moveAcc("BSL", self.home - 50*rand)
     time.sleep(ms)
-    super(SPR4,self).moveAcc("FLL", self.home - 70)
-    super(SPR4,self).moveAcc("RRL", self.home - 70)
-    super(SPR4,self).moveAcc("FLL", self.home - 40)
-    super(SPR4,self).moveAcc("RRL", self.home - 40)
+    super(SPR4,self).moveAcc("FLL", self.home + 70*rand)
+    super(SPR4,self).moveAcc("BLR", self.home - 70*rand)
+    super(SPR4,self).moveAcc("FLL", self.home + 40*rand)
+    super(SPR4,self).moveAcc("BLR", self.home - 40*rand)
     time.sleep(ms)
-    super(SPR4,self).moveAcc("RRS", self.home - 20)
-    super(SPR4,self).moveAcc("FLS", self.home)
+    super(SPR4,self).moveAcc("BSR", self.home - 20*rand)
+    super(SPR4,self).moveAcc("FSL", self.home)
     time.sleep(ms)
-    super(SPR4,self).moveAcc("RRL", self.home - 50)
-    super(SPR4,self).moveAcc("FLL", self.home - 70)
+    super(SPR4,self).moveAcc("BLR", self.home - 50*rand)
+    super(SPR4,self).moveAcc("FLL", self.home + 70*rand)
     time.sleep(ms)
 
 
