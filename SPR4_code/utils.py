@@ -2,6 +2,7 @@ import mbl_bots
 import logging
 from actuator import Actuator
 from sensor import Sensor
+from move import Movement
 
 def file2bot(file, types):
     with open(file) as data:
@@ -39,5 +40,15 @@ def genDictionary(list1, list2):
             dic[list1[i]] = list2[i]
     return dic
 
+
 def getDelay(speed):
     return speed/mbl_bots.SPEED_FACTOR
+
+
+def file2move(file):
+    with open(file) as data:
+        lines = [i.strip().split() for i in data]
+
+    for i in range(int(lines[0][0])):
+        moves = [Movement(lines[j+1]) for j in range(int(lines[0][0]))]
+    return moves

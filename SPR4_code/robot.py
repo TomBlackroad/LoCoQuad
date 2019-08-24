@@ -33,4 +33,8 @@ class Robot(object):
 		self.pwm.setServoPulse(int(self.actuators[int(self.acc_dic[name])].adress), poss)
 		print('Moving ', name ,'to', poss )
 
+	def executeMove(self,file):
+		moves = utils.file2move(file)
+		for i in range(len(moves)):
+			self.moveAcc(moves[i].actuator, moves[i].pos)
 

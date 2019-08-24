@@ -29,15 +29,16 @@ class SPR4(Robot):
 
   def flat(self):
     logging.debug("SPR4 is standing")
-    super(SPR4,self).moveAcc("FSR", self.home)
-    super(SPR4,self).moveAcc("FSL", self.home)
-    super(SPR4,self).moveAcc("BSR", self.home)
-    super(SPR4,self).moveAcc("BSL", self.home)
-    super(SPR4,self).moveAcc("FLR", self.home)
-    super(SPR4,self).moveAcc("FLL", self.home)
-    super(SPR4,self).moveAcc("BLR", self.home)
-    super(SPR4,self).moveAcc("BLL", self.home)
-    time.sleep(1)
+    super(SPR4,self).executeMove("SPR4_flat.movefile.txt")    
+    #super(SPR4,self).moveAcc("FSR", self.home)
+    #super(SPR4,self).moveAcc("FSL", self.home)
+    #super(SPR4,self).moveAcc("BSR", self.home)
+    #super(SPR4,self).moveAcc("BSL", self.home)
+    #super(SPR4,self).moveAcc("FLR", self.home)
+    #super(SPR4,self).moveAcc("FLL", self.home)
+    #super(SPR4,self).moveAcc("BLR", self.home)
+    #super(SPR4,self).moveAcc("BLL", self.home)
+    #time.sleep(1)
 
   def stand(self):
     logging.debug("SPR4 is standing")
