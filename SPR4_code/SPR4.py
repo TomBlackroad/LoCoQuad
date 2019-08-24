@@ -21,13 +21,13 @@ class SPR4(Robot):
     time.sleep(2)
     start_time = time.time()
     while ((time.time()-start_time)<60):
-      self.walkFront(5, 0.75)
+      self.stand()
     start_time = time.time()
     while True:
-      self.stand()
+      self.flat()
     
 
-  def stand(self):
+  def flat(self):
     logging.debug("SPR4 is standing")
     super(SPR4,self).moveAcc("FSR", self.home)
     super(SPR4,self).moveAcc("FSL", self.home)
@@ -37,6 +37,18 @@ class SPR4(Robot):
     super(SPR4,self).moveAcc("FLL", self.home)
     super(SPR4,self).moveAcc("BLR", self.home)
     super(SPR4,self).moveAcc("BLL", self.home)
+    time.sleep(1)
+
+  def stand(self):
+    logging.debug("SPR4 is standing")
+    super(SPR4,self).moveAcc("FSR", self.home)
+    super(SPR4,self).moveAcc("FSL", self.home)
+    super(SPR4,self).moveAcc("BSR", self.home)
+    super(SPR4,self).moveAcc("BSL", self.home)
+    super(SPR4,self).moveAcc("FLR", self.home-80)
+    super(SPR4,self).moveAcc("FLL", self.home+80)
+    super(SPR4,self).moveAcc("BLR", self.home+80)
+    super(SPR4,self).moveAcc("BLL", self.home-80)
     time.sleep(1) 
 
   def walkFront(self, speed, rand):
