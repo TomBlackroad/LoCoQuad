@@ -24,6 +24,7 @@ class Robot(object):
 		self.idx_sen = [i for i in range(len(self.sensors))]
 		self.acc_dic = utils.genDictionary(self.names_acc, self.idx_acc)
 		self.sen_dic = utils.genDictionary(self.names_sen, self.idx_sen)
+		self.state = mbl_bots.INIT
 		print(self.acc_dic)
 
 	def moveAcc(self,name,pos):
@@ -33,8 +34,33 @@ class Robot(object):
 		self.pwm.setServoPulse(int(self.actuators[int(self.acc_dic[name])].adress), poss)
 		print('Moving ', name ,'to', poss )
 
-	def executeMove(self,file):
+	def executeMove(self,file,speed):
 		moves = utils.file2move(file)
 		for i in range(len(moves)):
 			self.moveAcc(moves[i].actuator, moves[i].pos)
+			if(moves[i].delay > 0.0):
+				time.sleep(moves[i].delay*speed)
 
+	def flat(self):
+    	logging.debug("SPR4 is Flat")
+    	self.executeMove("SPR4_flat.movefile.txt", 1)    
+
+    def stand(self):
+    	logging.debug("SPR4 is Standing")
+    	self.executeMove("SPR4_stand.movefile.txt", 1)
+
+  	def walkFront(self, speed):
+    	logging.debug("SPR4 is Walking Forward")
+    	self.executeMove("SPR4_walk_front.movefile.txt", speed)
+
+    def walkBack(self, speed):
+    	logging.debug("SPR4 is Walking Backwards")
+    	self.executeMove("SPR4_walk_back.movefile.txt", speed)
+
+    def turnRight(self, speed):
+    	logging.debug("SPR4 is Turning Right")
+    	self.executeMove("SPR4_turn_right.movefile.txt", speed)
+
+    def turnLeft(self, speed):
+    	logging.debug("SPR4 is Turning Left")
+    	self.executeMove("SPR4_turn_left.movefile.txt", speed)

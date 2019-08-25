@@ -4,3 +4,4 @@ class Movement(object):
         super(Movement, self).__init__()
         self.actuator = args[0][0]
         self.pos = int(args[0][1])
+        self.delay = int(args[0][2])

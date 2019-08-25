@@ -13,3 +13,12 @@ SPEED_FACTOR = 10.0
 #Scaling factor from angles to pulses
 SCALE_ACC = 11
 CNT_ACC = 500
+
+#GENERAL FINITE STATE MACHINE
+#States
+INIT = 0
+REST = 1
+EXPLORE = 2
+SHOWOFF = 3
+PHOTO = 4
+
