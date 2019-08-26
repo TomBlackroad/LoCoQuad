@@ -10,5 +10,7 @@ class Cam(object):
 	def takePic(self):
 		self.camera.start_preview()
 		sleep(2)
-		self.camera.capture('/home/pi/piCamera/',datetime.now().strftime('%Y-%m-%d %H:%M:%S.jpg'))
+		filename = "./Captures/" + datetime.datetime.now().strftime('%Y-%m-%d--%H:%M:%S.jpg')
+		print(filename)
+		self.camera.capture(filename)
 		self.camera.stop_preview()
