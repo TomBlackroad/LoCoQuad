@@ -48,20 +48,20 @@ class SPR4(Robot):
         print("CURRENT STATE: EXPLORE")
         #EXPLORING METHODS
         #self.explore_FSM()
-	super(SPR4,self).flat()
-	time.sleep(1)
-	super(SPR4,self).stand()
-	time.sleep(3)
-	super(SPR4,self).flat()
-	time.sleep(2)
-	super(SPR4,self).stand()
+        super(SPR4,self).flat()
+        time.sleep(1)
+        super(SPR4,self).stand()
+        time.sleep(3)
+        super(SPR4,self).flat()
+        time.sleep(2)
+        super(SPR4,self).stand()
         super(SPR4,self).state = mbl_bots.SHOWOFF
 
     def SHOWOFF(self):
         print("CURRENT STATE: SHOWOFF")
         #SHOWOFF METHODS
         #self.showoff_FSM()
-	super(SPR4,self).sayHello()
+        super(SPR4,self).sayHello()
         super(SPR4,self).state = mbl_bots.PHOTO
     
     def PHOTO(self):
