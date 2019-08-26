@@ -49,11 +49,11 @@ class Robot(object):
 		logging.debug("SPR4 is Standing")
 		self.executeMove("SPR4_stand.movefile.txt", 1)
 
-  	def walkFront(self, speed):
+	def walkFront(self, speed):
 		logging.debug("SPR4 is Walking Forward")
 		self.executeMove("SPR4_walk_front.movefile.txt", speed)
 
-    def walkBack(self, speed):
+	def walkBack(self, speed):
 		logging.debug("SPR4 is Walking Backwards")
 		self.executeMove("SPR4_walk_back.movefile.txt", speed)
 
