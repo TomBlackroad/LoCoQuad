@@ -68,3 +68,8 @@ class Robot(object):
 	def sayHello(self):
 		logging.debug("SPR4 is Saying Hi!")
 		self.executeMove("SPR4_sayHello.movefile.txt", 1)
+
+	def cameraPose(self):
+		logging.debug("SPR4 ready to take Picture")
+		self.executeMove("SPR4_cameraPose.movefile.txt")
+

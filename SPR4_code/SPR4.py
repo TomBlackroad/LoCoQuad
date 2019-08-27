@@ -18,17 +18,16 @@ class SPR4(Robot):
         self.GFSM()
 
     def GFSM(self):
-        state = super(SPR4,self).state
         while True:
-            self.FSM(super(SPR4,self).state)
+            self.FSM(self.state)
 
     def FSM(self, state):
         states_list = {
-            0 : INIT,
-            1 : REST,
-            2 : EXPLORE,
-            3 : SHOWOFF,
-            4 : PHOTO,
+            0 : self.INIT,
+            1 : self.REST,
+            2 : self.EXPLORE,
+            3 : self.SHOWOFF,
+            4 : self.PHOTO,
         }
         func = states_list.get(state, lambda:None)
         return func()
@@ -36,13 +35,13 @@ class SPR4(Robot):
     def INIT(self):
         print("CURRENT STATE: INIT")
         self.camera = Cam()
-        super(SPR4,self).state = mbl_bots.REST
-        time.sleep(2)
+        self.state = mbl_bots.REST
+        time.sleep(1)
 
     def REST(self):
         print("CURRENT STATE: REST")
-        super(SPR4,self).state = mbl_bots.EXPLORE
-        time.sleep(10)
+        self.state = mbl_bots.EXPLORE
+        time.sleep(1)
 
     def EXPLORE(self):
         print("CURRENT STATE: EXPLORE")
@@ -51,23 +50,25 @@ class SPR4(Robot):
         super(SPR4,self).flat()
         time.sleep(1)
         super(SPR4,self).stand()
-        time.sleep(3)
-        super(SPR4,self).flat()
         time.sleep(2)
+        super(SPR4,self).flat()
+        time.sleep(1)
         super(SPR4,self).stand()
-        super(SPR4,self).state = mbl_bots.SHOWOFF
+        self.state = mbl_bots.SHOWOFF
 
     def SHOWOFF(self):
         print("CURRENT STATE: SHOWOFF")
         #SHOWOFF METHODS
         #self.showoff_FSM()
         super(SPR4,self).sayHello()
-        super(SPR4,self).state = mbl_bots.PHOTO
+        self.state = mbl_bots.PHOTO
     
     def PHOTO(self):
         print("CURRENT STATE: PHOTO")
-        self.camera.take_pic()
-        super(SPR4,self).state = mbl_bots.EXPLORE
+        super(SPR4,self).cameraPose()
+        self.camera.takePic()
+        super(SPR4,self).stand()
+        self.state = mbl_bots.EXPLORE
 
     # start_time = time.time()
     # while ((time.time()-start_time)<60):
