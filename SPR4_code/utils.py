@@ -58,18 +58,8 @@ def file2move(file):
     return moves
 
 
-
-
-def close(signal, frame):
-    print("\nTurning off SPR4 Activity...\n")
-    GPIO.cleanup() 
-    sys.exit(0)
-
-signal.signal(signal.SIGINT, close)
-
-
 def getDistance():
-    disance = -1.0
+    distance = -1.0
     buff = [0,0,0]
     for i in range(3):
         try:
