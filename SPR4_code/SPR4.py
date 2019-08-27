@@ -21,7 +21,7 @@ class SPR4(Robot):
         if(len(sys.argv)==2):
             print("EXECUTING TEST OF MOVEMENT", str(sys.argv[1])) 
             while True:
-                super(SPR4,self).executeMove(str(sys.argv[1]))
+                super(SPR4,self).executeMove(str(sys.argv[1]), 1)
         else: 
             self.GFSM()
 
