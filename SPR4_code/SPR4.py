@@ -18,7 +18,12 @@ class SPR4(Robot):
     def __init__(self):
         super(SPR4, self).__init__("SPR4.botfile.txt")
         #Brain method --- conscience!!!!
-        self.GFSM()
+        if(len(sys.argv)==2):
+            print("EXECUTING TEST OF MOVEMENT", str(sys.argv[1])) 
+            while True:
+                super(SPR4,self).executeMove(str(sys.argv[1]))
+        else: 
+            self.GFSM()
 
     def GFSM(self):
         while True:
