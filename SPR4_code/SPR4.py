@@ -43,7 +43,7 @@ class SPR4(Robot):
         GPIO.setup(mbl_bots.ECHO, GPIO.IN)
         self.camera = Cam()
         self.distance = -1
-        signal.signal(signal.SIGINT, close)
+        signal.signal(signal.SIGINT, self.close)
         self.state = mbl_bots.REST
         time.sleep(1)
 
@@ -85,7 +85,7 @@ class SPR4(Robot):
         super(SPR4,self).stand()
         self.state = mbl_bots.EXPLORE
 
-    def close(signal, frame):
+    def close(self, signal, frame):
         print("\nTurning off SPR4 Activity...\n")
         GPIO.cleanup() 
         sys.exit(0)
