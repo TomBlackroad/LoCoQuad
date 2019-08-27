@@ -71,5 +71,5 @@ class Robot(object):
 
 	def cameraPose(self):
 		logging.debug("SPR4 ready to take Picture")
-		self.executeMove("SPR4_cameraPose.movefile.txt")
+		self.executeMove("SPR4_cameraPose.movefile.txt", 1)
 
