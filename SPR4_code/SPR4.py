@@ -67,7 +67,7 @@ class SPR4(Robot):
         #self.showoff_FSM()
         start_time = time.time()
         while ((time.time()-start_time)<60):
-            super(SPR4,self).trunRight()
+            super(SPR4,self).turnRight()
         super(SPR4,self).sayHello()
         self.state = mbl_bots.PHOTO
     
