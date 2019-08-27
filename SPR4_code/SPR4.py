@@ -7,6 +7,7 @@ import sys
 import utils
 import logging
 import mbl_bots
+import signal
 
 from camera import Cam
 from robot import Robot
@@ -40,6 +41,7 @@ class SPR4(Robot):
         GPIO.setup(mbl_bots.TRIG, GPIO.OUT)
         GPIO.setup(mbl_bots.ECHO, GPIO.IN)
         self.camera = Cam()
+        signal.signal(signal.SIGINT, self.close)
         self.state = mbl_bots.REST
         time.sleep(1)
 
@@ -52,6 +54,7 @@ class SPR4(Robot):
         print("CURRENT STATE: EXPLORE")
         #EXPLORING METHODS
         #self.explore_FSM()
+        utils.getDistance()
         super(SPR4,self).flat()
         time.sleep(1)
         super(SPR4,self).stand()
@@ -78,60 +81,13 @@ class SPR4(Robot):
         super(SPR4,self).stand()
         self.state = mbl_bots.EXPLORE
 
-    # start_time = time.time()
-    # while ((time.time()-start_time)<60):
-    #   self.stand()
-    # start_time = time.time()
-    # while True:
-    #   self.flat()
+    def close(signal, frame):
+        print("\nTurning off SPR4 Activity...\n")
+        GPIO.cleanup() 
+        sys.exit(0)
+
     
 
-  
-    
-    # super(SPR4,self).moveAcc('BLL', self.home + 50*rand)
-    # super(SPR4,self).moveAcc('FLR', self.home - 30*rand)
-    # time.sleep(ms)
-    # super(SPR4,self).moveAcc("FSR", self.home - 45*rand)
-    # super(SPR4,self).moveAcc("BSR", self.home + 60*rand)
-    # time.sleep(ms)
-    # super(SPR4,self).moveAcc("FLR", self.home - 80*rand)
-    # super(SPR4,self).moveAcc("BLL", self.home + 60*rand)
-    # super(SPR4,self).moveAcc("FLR", self.home - 80*rand)
-    # super(SPR4,self).moveAcc("BLL", self.home + 50*rand)
-    # time.sleep(ms)
-    # super(SPR4,self).moveAcc("BSL", self.home + 30*rand)
-    # super(SPR4,self).moveAcc("FSR", self.home + 20*rand)
-    # time.sleep(ms)
-    # super(SPR4,self).moveAcc("BLL", self.home + 60*rand)
-    # super(SPR4,self).moveAcc("FLL", self.home + 80*rand)
-    # super(SPR4,self).moveAcc("BLL", self.home + 20*rand)
-    # super(SPR4,self).moveAcc("FLL", self.home + 40*rand)
-    # time.sleep(ms)
-    # super(SPR4,self).moveAcc("FSL", self.home + 60*rand)
-    # super(SPR4,self).moveAcc("BSL", self.home - 50*rand)
-    # time.sleep(ms)
-    # super(SPR4,self).moveAcc("FLL", self.home + 70*rand)
-    # super(SPR4,self).moveAcc("BLR", self.home - 70*rand)
-    # super(SPR4,self).moveAcc("FLL", self.home + 40*rand)
-    # super(SPR4,self).moveAcc("BLR", self.home - 40*rand)
-    # time.sleep(ms)
-    # super(SPR4,self).moveAcc("BSR", self.home - 20*rand)
-    # super(SPR4,self).moveAcc("FSL", self.home)
-    # time.sleep(ms)
-    # super(SPR4,self).moveAcc("BLR", self.home - 50*rand)
-    # super(SPR4,self).moveAcc("FLL", self.home + 70*rand)
-    # time.sleep(ms)
-
-
-#  def walkBack(self, speed, rand):
-#    """
-#    """
-#  def walkRight(self, speed, rand):
-#    """
-#    """
-#  def walkLeft(self, speed, rand):
-#    """
-#    """
 
 #                                                             #     
 #  ---------------------------------------------------------  #
@@ -167,14 +123,3 @@ class SPR4(Robot):
 if __name__=='__main__':
   SPR4 = SPR4()
   
-
-"""
-if __name__=='__main__':
-  pwm = PCA9685(0x40, debug=True)
-  pwm.setPWMFreq(50)
-   # setServoPulse(2,2500)
-   # for i in range(500,2500,2):
-   #   pwm.setServoPulse(int(sys.argv[1]),i)
-   # for i in range(2500,500,-2):
-   #   pwm.setServoPulse(int(sys.argv[1]),i)
-"""

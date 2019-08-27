@@ -61,7 +61,7 @@ def file2move(file):
 
 
 def close(signal, frame):
-    print("\nTurning off ultrasonic distance detection...\n")
+    print("\nTurning off SPR4 Activity...\n")
     GPIO.cleanup() 
     sys.exit(0)
 
