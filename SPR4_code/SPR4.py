@@ -9,6 +9,7 @@ import logging
 import mbl_bots
 import signal
 
+from random import randint
 from camera import Cam
 from robot import Robot
 from servo_hat_driver import PCA9685
@@ -41,7 +42,8 @@ class SPR4(Robot):
         GPIO.setup(mbl_bots.TRIG, GPIO.OUT)
         GPIO.setup(mbl_bots.ECHO, GPIO.IN)
         self.camera = Cam()
-        signal.signal(signal.SIGINT, self.close)
+        self.distance = -1
+        signal.signal(signal.SIGINT, close)
         self.state = mbl_bots.REST
         time.sleep(1)
 
@@ -54,23 +56,25 @@ class SPR4(Robot):
         print("CURRENT STATE: EXPLORE")
         #EXPLORING METHODS
         #self.explore_FSM()
-        utils.getDistance()
+        self.distance = utils.getDistance()
+        #super(SPR4,self).flat()
+        #time.sleep(1)
+        #super(SPR4,self).stand()
+        #time.sleep(2)
         super(SPR4,self).flat()
         time.sleep(1)
         super(SPR4,self).stand()
-        time.sleep(2)
-        super(SPR4,self).flat()
-        time.sleep(1)
-        super(SPR4,self).stand()
+        start_time = time.time()
+        while ((time.time()-start_time)<30):
+            if(randint(0,1) == 1): super(SPR4,self).turnRight(1)
+            else: super(SPR4,self).turnLeft(1)  
         self.state = mbl_bots.SHOWOFF
 
     def SHOWOFF(self):
         print("CURRENT STATE: SHOWOFF")
         #SHOWOFF METHODS
         #self.showoff_FSM()
-        start_time = time.time()
-        while ((time.time()-start_time)<60):
-            super(SPR4,self).turnRight(3)
+        super(SPR4,self).swing()
         super(SPR4,self).sayHello()
         self.state = mbl_bots.PHOTO
     
@@ -122,4 +126,3 @@ class SPR4(Robot):
 
 if __name__=='__main__':
   SPR4 = SPR4()
-  

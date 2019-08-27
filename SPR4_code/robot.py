@@ -73,3 +73,7 @@ class Robot(object):
 		logging.debug("SPR4 ready to take Picture")
 		self.executeMove("SPR4_cameraPose.movefile.txt", 1)
 
+	def swing(self):
+		logging.debug("SPR4 is Swinging")
+		self.executeMove("SPR4_swing.movefile.txt", 1)		
+
