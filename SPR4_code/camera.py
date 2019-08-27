@@ -6,6 +6,7 @@ class Cam(object):
 	def __init__(self):
 		self.camera = PiCamera()
 		self.camera.resolution = (1024, 768)
+		self.camera.rotation = 180
 	
 	def takePic(self):
 		self.camera.start_preview()
