@@ -57,15 +57,14 @@ class SPR4(Robot):
         #EXPLORING METHODS
         #self.explore_FSM()
         self.distance = utils.getDistance()
-        #super(SPR4,self).flat()
-        #time.sleep(1)
-        #super(SPR4,self).stand()
-        #time.sleep(2)
         super(SPR4,self).flat()
         time.sleep(1)
+        start_time = time.time()
+        while ((time.time()-start_time)<20):
+            super(SPR4,self).walkFront(1)
         super(SPR4,self).stand()
         start_time = time.time()
-        while ((time.time()-start_time)<30):
+        while ((time.time()-start_time)<20):
             if(randint(0,1) == 1): super(SPR4,self).turnRight(1)
             else: super(SPR4,self).turnLeft(1)  
         self.state = mbl_bots.SHOWOFF

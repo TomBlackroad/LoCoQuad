@@ -62,34 +62,34 @@ def getDistance():
     distance = -1.0
     buff = [0,0,0]
     for i in range(3):
-        #try:
-        # set Trigger to HIGH
-        GPIO.output(mbl_bots.TRIG, True)
-        # set Trigger after 0.01ms to LOW
-        time.sleep(0.00001)
-        GPIO.output(mbl_bots.TRIG, False)
+        try:
+            # set Trigger to HIGH
+            GPIO.output(mbl_bots.TRIG, True)
+            # set Trigger after 0.01ms to LOW
+            time.sleep(0.00001)
+            GPIO.output(mbl_bots.TRIG, False)
 
-        startTime = time.time()
-        stopTime = time.time()
-
-        # save start time
-        while 0 == GPIO.input(mbl_bots.ECHO):
             startTime = time.time()
-
-        # save time of arrival
-        while 1 == GPIO.input(mbl_bots.ECHO):
             stopTime = time.time()
 
-        # time difference between start and arrival
-        TimeElapsed = stopTime - startTime
-        # multiply with the sonic speed (34300 cm/s)
-        # and divide by 2, because there and back
-        buff[i] = (TimeElapsed * 34300.0) / 2.0
-        time.sleep(0.2)
+            # save start time
+            while 0 == GPIO.input(mbl_bots.ECHO):
+                startTime = time.time()
 
-        #except:
-        #    print("Not able to get distance... something went wrong!!")
-        #    return distance
+            # save time of arrival
+            while 1 == GPIO.input(mbl_bots.ECHO):
+                stopTime = time.time()
+
+            # time difference between start and arrival
+            TimeElapsed = stopTime - startTime
+            # multiply with the sonic speed (34300 cm/s)
+            # and divide by 2, because there and back
+            buff[i] = (TimeElapsed * 34300.0) / 2.0
+            time.sleep(0.2)
+
+        except:
+            print("Not able to get distance... something went wrong!!")
+            return distance
 
     buff_avg = (buff[0]+buff[1]+buff[2])/3.0
     if buff_avg > 0.0: 
