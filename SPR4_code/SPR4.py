@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import RPi.GPIO as GPIO
 import time
 import math
 import smbus
@@ -34,6 +35,10 @@ class SPR4(Robot):
 
     def INIT(self):
         print("CURRENT STATE: INIT")
+        # use Raspberry Pi board pin numbers
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(mbl_bots.TRIG, GPIO.OUT)
+        GPIO.setup(mbl_bots.ECHO, GPIO.IN)
         self.camera = Cam()
         self.state = mbl_bots.REST
         time.sleep(1)
@@ -60,6 +65,9 @@ class SPR4(Robot):
         print("CURRENT STATE: SHOWOFF")
         #SHOWOFF METHODS
         #self.showoff_FSM()
+        start_time = time.time()
+        while ((time.time()-start_time)<60):
+            super(SPR4,self).trunRight()
         super(SPR4,self).sayHello()
         self.state = mbl_bots.PHOTO
     

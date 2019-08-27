@@ -22,3 +22,6 @@ EXPLORE = 2
 SHOWOFF = 3
 PHOTO = 4
 
+# GPIO Pins
+TRIG = 27
+ECHO = 22
