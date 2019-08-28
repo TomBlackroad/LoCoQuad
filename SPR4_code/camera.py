@@ -11,7 +11,7 @@ class Cam(object):
 	def takePic(self):
 		self.camera.start_preview()
 		sleep(2)
-		filename = "./Captures/" + datetime.datetime.now().strftime('%Y-%m-%d--%H-%M-%S.jpg')
+		filename = "/home/pi/SPR4/SPR4_code/Captures/" + datetime.datetime.now().strftime('%Y-%m-%d--%H-%M-%S.jpg')
 		print(filename)
 		self.camera.capture(filename)
 		self.camera.stop_preview()

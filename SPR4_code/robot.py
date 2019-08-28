@@ -43,37 +43,37 @@ class Robot(object):
 
 	def flat(self):
 		logging.debug("SPR4 is Flat")
-		self.executeMove("SPR4_flat.movefile.txt", 1)    
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_flat.movefile.txt", 1)    
 
 	def stand(self):
 		logging.debug("SPR4 is Standing")
-		self.executeMove("SPR4_stand.movefile.txt", 1)
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_stand.movefile.txt", 1)
 
 	def walkFront(self, speed):
 		logging.debug("SPR4 is Walking Forward")
-		self.executeMove("SPR4_walkFront.movefile.txt", speed)
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_walkFront.movefile.txt", speed)
 
 	def walkBack(self, speed):
 		logging.debug("SPR4 is Walking Backwards")
-		self.executeMove("SPR4_walkBack.movefile.txt", speed)
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_walkBack.movefile.txt", speed)
 
 	def turnRight(self, speed):
 		logging.debug("SPR4 is Turning Right")
-		self.executeMove("SPR4_turnRight.movefile.txt", speed)
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_turnRight.movefile.txt", speed)
 
 	def turnLeft(self, speed):
 		logging.debug("SPR4 is Turning Left")
-		self.executeMove("SPR4_turnLeft.movefile.txt", speed)
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_turnLeft.movefile.txt", speed)
 	
 	def sayHello(self):
 		logging.debug("SPR4 is Saying Hi!")
-		self.executeMove("SPR4_sayHello.movefile.txt", 1)
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_sayHello.movefile.txt", 1)
 
 	def cameraPose(self):
 		logging.debug("SPR4 ready to take Picture")
-		self.executeMove("SPR4_cameraPose.movefile.txt", 1)
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_cameraPose.movefile.txt", 1)
 
 	def swing(self):
 		logging.debug("SPR4 is Swinging")
-		self.executeMove("SPR4_swing.movefile.txt", 1)		
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_swing.movefile.txt", 1)		
 

@@ -8,6 +8,7 @@ import utils
 import logging
 import mbl_bots
 import signal
+import os
 
 from random import randint
 from camera import Cam
@@ -16,7 +17,14 @@ from servo_hat_driver import PCA9685
 
 class SPR4(Robot):
     def __init__(self):
-        super(SPR4, self).__init__("SPR4.botfile.txt")
+        try:
+            # Change the current working Directory    
+            os.chdir("/home/pi/SPR4/SPR4_code")
+            print("Directory changed")
+        except OSError:
+            print("Can't change the Current Working Directory") 
+        
+        super(SPR4, self).__init__("/home/pi/SPR4/SPR4_code/SPR4.botfile.txt")
         #Brain method --- conscience!!!!
         if(len(sys.argv)==2):
             print("EXECUTING TEST OF MOVEMENT", str(sys.argv[1])) 
