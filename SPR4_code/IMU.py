@@ -31,24 +31,24 @@ class IMU:
 
 	def MPU_Init(self):
 		#write to sample rate register
-		bus.write_byte_data(self.Device_Address, mbl_bots.__SMPLRT_DIV, 7)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.__SMPLRT_DIV, 7)
 
 		#Write to power management register
-		bus.write_byte_data(self.Device_Address, mbl_bots.__PWR_MGMT_1, 1)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.__PWR_MGMT_1, 1)
 
 		#Write to Configuration register
-		bus.write_byte_data(self.Device_Address, mbl_bots.__CONFIG, 0)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.__CONFIG, 0)
 
 		#Write to Gyro configuration register
-		bus.write_byte_data(self.Device_Address, mbl_bots.__GYRO_CONFIG, 24)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.__GYRO_CONFIG, 24)
 
 		#Write to interrupt enable register
-		bus.write_byte_data(self.Device_Address, mbl_bots.__INT_ENABLE, 1)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.__INT_ENABLE, 1)
 
 	def read_raw_data(self, addr):
 		#Accelero and Gyro value are 16-bit
-		high = bus.read_byte_data(self.Device_Address, addr)
-		low = bus.read_byte_data(self.Device_Address, addr+1)
+		high = self.bus.read_byte_data(self.Device_Address, addr)
+		low = self.bus.read_byte_data(self.Device_Address, addr+1)
 
 		#concatenate higher and lower value
 		value = ((high << 8) | low)
