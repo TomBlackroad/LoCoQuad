@@ -101,7 +101,8 @@ class Robot(object):
 	def detectCatch(self, imu):
 		data = imu.getImuRawData()
 		print(data)
-		if(data[3] < 3 or data[4] < 3 or data[5] < 3): 
+		if(data[3] > 3 or data[4] > 3 or data[5] > 3): 
+			print("ROBOT CATCHED...do something!!")
 			return True
 		else: 
 			return False

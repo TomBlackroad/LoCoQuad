@@ -96,7 +96,7 @@ class SPR4(Robot):
         super(SPR4,self).stand()
         #EXPLORING FiniteStateMachine
         while(self.state == mbl_bots.EXPLORE):
-            self.exploreFSM()
+            self.exploreFSM(self.exploreState)
         
 
     def exploreGetData(self):
