@@ -25,6 +25,8 @@ class Robot(object):
 		self.acc_dic = utils.genDictionary(self.names_acc, self.idx_acc)
 		self.sen_dic = utils.genDictionary(self.names_sen, self.idx_sen)
 		self.state = mbl_bots.INIT
+		self.exploreState = mbl_bots.GETDATA
+		self.movesCode = mbl_bots.NONE
 		print(self.acc_dic)
 
 	def moveAcc(self,name,pos):
@@ -49,19 +51,19 @@ class Robot(object):
 		logging.debug("SPR4 is Standing")
 		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_stand.movefile.txt", 1)
 
-	def walkFront(self, speed):
+	def walkFront(self, speed=1):
 		logging.debug("SPR4 is Walking Forward")
 		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_walkFront.movefile.txt", speed)
 
-	def walkBack(self, speed):
+	def walkBack(self, speed=1):
 		logging.debug("SPR4 is Walking Backwards")
 		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_walkBack.movefile.txt", speed)
 
-	def turnRight(self, speed):
+	def turnRight(self, speed=1):
 		logging.debug("SPR4 is Turning Right")
 		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_turnRight.movefile.txt", speed)
 
-	def turnLeft(self, speed):
+	def turnLeft(self, speed=1):
 		logging.debug("SPR4 is Turning Left")
 		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_turnLeft.movefile.txt", speed)
 	
@@ -75,5 +77,22 @@ class Robot(object):
 
 	def swing(self):
 		logging.debug("SPR4 is Swinging")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_swing.movefile.txt", 1)		
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_swing.movefile.txt", 1)	
 
+	def shake(self):
+		logging.debug("SPR4 is Shaking")
+		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_shake.movefile.txt", 1)	
+
+	def move(self, code):
+		moves = {
+        	1: self.walkFront,
+        	2: self.walkBack,
+        	3: self.walkRight,
+        	4: self.walkLeft,
+        	5: self.turnRight,
+        	6: self.turnLeft,
+        	7: self.flat,
+        	8: self.stand,
+    	}
+    	func = moves.get(code, lambda: None)
+    	return func()

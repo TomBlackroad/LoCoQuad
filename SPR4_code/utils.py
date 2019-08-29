@@ -99,3 +99,10 @@ def getDistance():
         print("Not able to get distance...")
     return distance
         #print("Distance: %.1f cm" % distance)    
+
+    def detectCatch(self, imu):
+        data = imu.getImuRawData()
+        if(data[3] < 3 || data[4] < 3 || data[5] < 3): 
+            return True
+        else: 
+            return False
