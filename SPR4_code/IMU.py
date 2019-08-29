@@ -31,19 +31,19 @@ class IMU:
 
 	def MPU_Init(self):
 		#write to sample rate register
-		self.bus.write_byte_data(self.Device_Address, mbl_bots.__SMPLRT_DIV, 7)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.SMPLRT_DIV, 7)
 
 		#Write to power management register
-		self.bus.write_byte_data(self.Device_Address, mbl_bots.__PWR_MGMT_1, 1)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.PWR_MGMT_1, 1)
 
 		#Write to Configuration register
-		self.bus.write_byte_data(self.Device_Address, mbl_bots.__CONFIG, 0)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.CONFIG, 0)
 
 		#Write to Gyro configuration register
-		self.bus.write_byte_data(self.Device_Address, mbl_bots.__GYRO_CONFIG, 24)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.GYRO_CONFIG, 24)
 
 		#Write to interrupt enable register
-		self.bus.write_byte_data(self.Device_Address, mbl_bots.__INT_ENABLE, 1)
+		self.bus.write_byte_data(self.Device_Address, mbl_bots.INT_ENABLE, 1)
 
 	def read_raw_data(self, addr):
 		#Accelero and Gyro value are 16-bit
@@ -62,14 +62,14 @@ class IMU:
 		data = [0,0,0,0,0,0]
 		try:
 	        #Read Accelerometer raw value
-			acc_x = self.read_raw_data(mbl_bots.__ACCEL_XOUT_H)
-			acc_y = self.read_raw_data(mbl_bots.__ACCEL_YOUT_H)
-			acc_z = self.read_raw_data(mbl_bots.__ACCEL_ZOUT_H)
+			acc_x = self.read_raw_data(mbl_bots.ACCEL_XOUT_H)
+			acc_y = self.read_raw_data(mbl_bots.ACCEL_YOUT_H)
+			acc_z = self.read_raw_data(mbl_bots.ACCEL_ZOUT_H)
 
 	        #Read Gyroscope raw value
-			gyro_x = self.read_raw_data(mbl_bots.__GYRO_XOUT_H)
-			gyro_y = self.read_raw_data(mbl_bots.__GYRO_YOUT_H)
-			gyro_z = self.read_raw_data(mbl_bots.__GYRO_ZOUT_H)
+			gyro_x = self.read_raw_data(mbl_bots.GYRO_XOUT_H)
+			gyro_y = self.read_raw_data(mbl_bots.GYRO_YOUT_H)
+			gyro_z = self.read_raw_data(mbl_bots.GYRO_ZOUT_H)
 
 	        #Full scale range +/- 250 degree/C as per sensitivity scale factor
 			Ax = acc_x/16384.0
