@@ -17,7 +17,7 @@ class Robot(object):
 		(self.actuators, self.sensors) = utils.file2bot(file, mbl_bots.BOTH)
 		self.pwm = PCA9685(0x40, debug=False)
 		self.pwm.setPWMFreq(50)
-		print("My name is: ", self.actuators[0].name)
+		#print("My name is: ", self.actuators[0].name)
 		self.names_acc = [self.actuators[i].name for i in range(len(self.actuators))]
 		self.names_sen = [self.sensors[i].name for i in range(len(self.sensors))]
 		self.idx_acc = [i for i in range(len(self.actuators))]
@@ -27,14 +27,14 @@ class Robot(object):
 		self.state = mbl_bots.INIT
 		self.exploreState = mbl_bots.GETDATA
 		self.movesCode = mbl_bots.NONE
-		print(self.acc_dic)
+		#print(self.acc_dic)
 
 	def moveAcc(self,name,pos):
 		poss = pos*mbl_bots.SCALE_ACC + mbl_bots.CNT_ACC
 		if (poss > self.actuators[int(self.acc_dic[name])].max): poss = self.actuators[int(self.acc_dic[name])].max
 		if (poss < self.actuators[int(self.acc_dic[name])].min): poss = self.actuators[int(self.acc_dic[name])].min
 		self.pwm.setServoPulse(int(self.actuators[int(self.acc_dic[name])].adress), poss)
-		print('Moving ', name ,'to', poss )
+		#print('Moving ', name ,'to', poss )
 
 	def executeMove(self,file,speed):
 		moves = utils.file2move(file)
@@ -94,6 +94,5 @@ class Robot(object):
         	7: self.flat,
         	8: self.stand,
     	}
-    	
-    	func = moves.get(code, lambda:None)
+		func = moves.get(code, lambda:None)
         return func()
