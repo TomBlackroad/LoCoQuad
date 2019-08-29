@@ -98,7 +98,7 @@ class Robot(object):
 		func = moves.get(code, lambda:None)
 		return func()
 
-	def detectCatch(imu):
+	def detectCatch(self, imu):
 		data = imu.getImuRawData()
 		print(data)
 		if(data[3] < 3 or data[4] < 3 or data[5] < 3): 
