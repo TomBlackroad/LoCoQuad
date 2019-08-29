@@ -100,6 +100,8 @@ class SPR4(Robot):
         
 
     def exploreGetData(self):
+        print("CURRENT STATE: EXPLORE")
+        print("CURRENT SUBSTATE: DATA ACQUISITION")
         self.distance = utils.getDistance()
         self.lastIMU = self.currentIMU
         self.currentIMU = self.imu.getImuRawData()
@@ -107,6 +109,8 @@ class SPR4(Robot):
         self.exploreState = mbl_bots.PROCESSDATA
 
     def exploreProcessData(self):
+        print("CURRENT STATE: EXPLORE")
+        print("CURRENT SUBSTATE: DATA PROCESSING")
         if(self.distance < 5):
             self.movesCode = mbl_bots.WB
         elif(self.distance > 15):
@@ -118,12 +122,14 @@ class SPR4(Robot):
                 self.movesCode = mbl_bots.TL
 
         if(randint(0,5)>1):
-            self.exploreState = mbl_bots.MOVEMENT
+            self.exploreState = mbl_bots.MOVE
         else:
             self.exploreState = mbl_bots.GETDATA
             self.state = mbl_bots.SHOWOFF
 
     def exploreMove(self):
+        print("CURRENT STATE: EXPLORE")
+        print("CURRENT SUBSTATE: MOVING")
         super(SPR4,self).move(self.movesCode)
         self.exploreState = mbl_bots.GETDATA
 
