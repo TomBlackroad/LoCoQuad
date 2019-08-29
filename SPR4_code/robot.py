@@ -95,4 +95,5 @@ class Robot(object):
         	8: self.stand,
     	}
 		func = moves.get(code, lambda:None)
-        return func()
+		return func()
+		
