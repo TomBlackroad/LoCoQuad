@@ -96,3 +96,4 @@ class Robot(object):
     	}
     	func = moves.get(code, lambda: None)
     	return func()
+    	
