@@ -100,7 +100,7 @@ def getDistance():
     return distance
         #print("Distance: %.1f cm" % distance)    
 
-    def detectCatch(self, imu):
+    def detectCatch(imu):
         data = imu.getImuRawData()
         print(data)
         if(data[3] < 3 or data[4] < 3 or data[5] < 3): 
