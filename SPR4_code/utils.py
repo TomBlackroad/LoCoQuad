@@ -102,7 +102,8 @@ def getDistance():
 
     def detectCatch(self, imu):
         data = imu.getImuRawData()
-        if(data[3] < 3 || data[4] < 3 || data[5] < 3): 
+        print(data)
+        if(data[3] < 3 or data[4] < 3 or data[5] < 3): 
             return True
         else: 
             return False
