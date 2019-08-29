@@ -120,12 +120,14 @@ class SPR4(Robot):
                 self.movesCode = mbl_bots.TR
             else: 
                 self.movesCode = mbl_bots.TL
+        
+        self.exploreState = mbl_bots.MOVE
 
-        if(randint(0,5)>1):
-            self.exploreState = mbl_bots.MOVE
-        else:
-            self.exploreState = mbl_bots.GETDATA
-            self.state = mbl_bots.SHOWOFF
+        # if(randint(0,5)>1):
+        #     self.exploreState = mbl_bots.MOVE
+        # else:
+        #     self.exploreState = mbl_bots.GETDATA
+        #     self.state = mbl_bots.SHOWOFF
 
     def exploreMove(self):
         print("CURRENT STATE: EXPLORE")
