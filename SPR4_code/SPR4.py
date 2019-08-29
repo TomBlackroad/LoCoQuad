@@ -69,7 +69,7 @@ class SPR4(Robot):
         print("CURRENT STATE: REST")
         start_time = time.time()
         while ((time.time()-start_time)<20):
-            if(utils.detectCatch(self.imu)):
+            if(super(SPR4,self).detectCatch(self.imu)):
                 for i in range(5):
                     super(SPR4,self).shake()
                 break
