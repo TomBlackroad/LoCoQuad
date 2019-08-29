@@ -94,6 +94,6 @@ class Robot(object):
         	7: self.flat,
         	8: self.stand,
     	}
-    	func = moves.get(code, lambda: None)
-    	return func()
     	
+    	func = moves.get(code, lambda:None)
+        return func()
