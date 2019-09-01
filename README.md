@@ -1,6 +1,6 @@
 # SPR4 Robot
 
-**Authors:** [Manuel Bernal]
+**Authors:** [Manuel Bernal] & [Javier Civera]
 
 SPR4 is an Open Source, LowCost four legged Robot based on the Raspberry Pi platform. 
 It has arise as response of the necesity of cheap robotic platforms orientated to the development of IA, ML and RL algorithims.
@@ -35,7 +35,10 @@ chmod +x build.sh
 
 This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono_tum**, **mono_kitti**, **rgbd_tum**, **stereo_kitti**, **mono_euroc** and **stereo_euroc** in *Examples* folder.
 
-# 4. Future Versions
+# 4. Components and Costs
+
+
+# 5. Future Versions
 
 ## OpenCV
 OpenCV is not used in this first version, nevertheless we are working to bring new functionalities based on this librery.
@@ -43,7 +46,7 @@ OpenCV is not used in this first version, nevertheless we are working to bring n
 ## ROS (optional)
 Currently testing the code into the ROS structure, new version would have all the ROS capabilities ready to use. 
 
-# 4. Comments
+# 6. Comments
 
 ## Other Designs
 New configuration for the SPR4 Legs are almost ready to come out. Four legged 3 joints SPR6 would be released very soon.
