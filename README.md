@@ -7,8 +7,7 @@ It has arise as response of the necesity of cheap robotic platforms orientated t
 
 SPR4 is the first final version of a series of prototipes, the SPR family. They all had 4 legs, and this model has two joints per leg, giving a total of 8 servo motors controlling the movement of this little quadruped. Designed in the spider mode, it has a very low price (150 USD) and brings lots of development oportunities.
 
-<a href="https://www.youtube.com/embed/ufvPS5wJAx0" target="_blank"><img src="http://img.youtube.com/vi/ufvPS5wJAx0/0.jpg" 
-alt="ORB-SLAM2" width="240" height="180" border="10" /></a>
+![](SPR4_pics/SPR4_perspective_color.jpg)
 
 # 1. License
 SPR4 Software is released under a [GPLv3 license](https://https://github.com/TomBlackroad/SPR4/blob/master/LICENSE).
