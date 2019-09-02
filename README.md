@@ -21,19 +21,19 @@ In order to use the code, a SPR4 Robot would be needed.
 
 # 3. Building your own SPR4 Robot
 
-Clone the repository:
-```
-git clone https://github.com/raulmur/ORB_SLAM2.git ORB_SLAM2
-```
+Buil your SPR4 Robot (You can follow this instructions: thingeverse.com and this tutorial: youtube.com )
 
-We provide a script `build.sh` to build the *Thirdparty* libraries and *ORB-SLAM2*. Please make sure you have installed all required dependencies (see section 2). Execute:
-```
-cd ORB_SLAM2
-chmod +x build.sh
-./build.sh
-```
+Once ready, burn your 32 GB SD card whith the following image: link to repository...
 
-This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono_tum**, **mono_kitti**, **rgbd_tum**, **stereo_kitti**, **mono_euroc** and **stereo_euroc** in *Examples* folder.
+Clone the repository in your Raspberry:
+```
+git clone https://github.com/TomBlackroad/SPR4.git
+```
+Calibrate all the servos... VIDEO
+
+
+
+TODO...
 
 # 4. Components and Costs
 
