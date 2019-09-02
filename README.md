@@ -37,6 +37,10 @@ This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono
 
 # 4. Components and Costs
 
+## List of 3D parts needed
+![](SPR4_data/SPR4_parts.JPG)
+## Overall SPR4 Costs
+![](SPR4_data/SPR4_costs.JPG)
 
 # 5. Future Versions
 
