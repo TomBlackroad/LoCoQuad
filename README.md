@@ -6,10 +6,11 @@ LoCoQuad is an Open Source, LowCost four legged Robot based on the Raspberry Pi 
 It has arise as response of the necesity of cheap robotic platforms orientated to the development of IA, ML and RL algorithims.
 
 LoCoQuad is the first final version of a series of prototipes, the LoCoQuad's family. They all had 4 legs, and they can handle two or three joints per leg, giving a range of personalization from 8 to 12 servo motors controlling the movement of this little quadruped. Designed in the spider mode, it has a very low price (150 USD) and brings lots of development oportunities.
-##Two Joints Configuration:
+
+## Two Joints Configuration:
 ![](Pictures/LoCoQuad_perspective_color.jpg)
 
-##Three Joints Configuration:
+## Three Joints Configuration:
 ![](Pictures/LoCoQuad_3J_perspective_color.jpg)
 
 # 1. License
