@@ -38,6 +38,9 @@ git clone https://github.com/TomBlackroad/LoCoQuad.git
 Calibrate all the servos... VIDEO
 
 
+<p align="center">
+  <img src="Pictures/LoCoQuad_3J_assembly_conic_color_cut.jpg" width="380" alt="centered image"/>
+</p>
 
 TODO...
 
