@@ -8,10 +8,14 @@ It has arise as response of the necesity of cheap robotic platforms orientated t
 LoCoQuad is the first final version of a series of prototipes, the LoCoQuad's family. They all had 4 legs, and they can handle two or three joints per leg, giving a range of personalization from 8 to 12 servo motors controlling the movement of this little quadruped. Designed in the spider mode, it has a very low price (150 USD) and brings lots of development oportunities.
 
 ## Two Joints Configuration:
-![](Pictures/LoCoQuad_perspective_color.jpg)
+<p align="center">
+  <img src="Pictures/LoCoQuad_perspective_color.jpg" width="380" alt="centered image"/>
+</p>
 
 ## Three Joints Configuration:
-![](Pictures/LoCoQuad_3J_perspective_color.jpg)
+<p align="center">
+  <img src="Pictures/LoCoQuad_3J_perspective_color.jpg" width="380" alt="centered image"/>
+</p>
 
 # 1. License
 LoCoQuad Software is released under a [GPLv3 license](https://https://github.com/TomBlackroad/LoCoQuad/blob/master/LICENSE).
