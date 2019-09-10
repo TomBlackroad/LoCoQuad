@@ -17,14 +17,14 @@ from servo_hat_driver import PCA9685
 from IMU import IMU
 
 
-class SPR4(Robot):
+class LoCoQuad(Robot):
     def __init__(self):        
-        super(SPR4, self).__init__("/home/pi/SPR4/SPR4_code/SPR4.botfile.txt")
+        super(LoCoQuad, self).__init__("/home/pi/LoCoQuad/Code/LoCoQuad.botfile.txt")
         #Brain method --- conscience!!!!
         if(len(sys.argv)==2):
             print("EXECUTING TEST OF MOVEMENT", str(sys.argv[1])) 
             while True:
-                super(SPR4,self).executeMove(str(sys.argv[1]), 1)
+                super(LoCoQuad,self).executeMove(str(sys.argv[1]), 1)
         else: 
             while True:
                 self.generalFSM(self.state)
@@ -68,10 +68,10 @@ class SPR4(Robot):
     def REST(self):
         print("CURRENT STATE: REST")
         start_time = time.time()
-        while ((time.time()-start_time)<20):
-            if(super(SPR4,self).detectCatch(self.imu)):
+        while ((time.time()-start_time)<25):
+            if(super(LoCoQuad,self).detectCatch(self.imu)):
                 for i in range(5):
-                    super(SPR4,self).shake()
+                    super(LoCoQuad,self).shake()
                 break
             else:
                 time.sleep(0.5)
@@ -93,7 +93,7 @@ class SPR4(Robot):
 
     def EXPLORE(self):
         print("CURRENT STATE: EXPLORE")
-        super(SPR4,self).stand()
+        super(LoCoQuad,self).stand()
         #EXPLORING FiniteStateMachine
         while(self.state == mbl_bots.EXPLORE):
             self.exploreFSM(self.exploreState)
@@ -111,15 +111,15 @@ class SPR4(Robot):
     def exploreProcessData(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: DATA PROCESSING")
-        if(self.distance < 5):
+        if(self.distance < 10):
             self.movesCode = mbl_bots.WB
-        elif(self.distance > 15):
+        elif(self.distance > 30):
             self.movesCode = mbl_bots.WF
         else:
-            if(randint(0,1) == 1): 
-                self.movesCode = mbl_bots.TR
-            else: 
-                self.movesCode = mbl_bots.TL
+            #if(randint(0,1) == 1): 
+            self.movesCode = mbl_bots.TR
+            #else: 
+            #    self.movesCode = mbl_bots.TL
         
         self.exploreState = mbl_bots.MOVE
 
@@ -132,7 +132,7 @@ class SPR4(Robot):
     def exploreMove(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: MOVING")
-        super(SPR4,self).move(self.movesCode)
+        super(LoCoQuad,self).move(self.movesCode)
         self.exploreState = mbl_bots.GETDATA
 
     def exploreReconTurn(self):
@@ -149,8 +149,8 @@ class SPR4(Robot):
     def SHOWOFF(self):
         print("CURRENT STATE: SHOWOFF")
         #SHOWOFF METHODS
-        super(SPR4,self).swing()
-        super(SPR4,self).sayHello()
+        super(LoCoQuad,self).swing()
+        super(LoCoQuad,self).sayHello()
         self.state = mbl_bots.PHOTO
 
 #=============================================================================
@@ -158,15 +158,15 @@ class SPR4(Robot):
 #=============================================================================    
     def PHOTO(self):
         print("CURRENT STATE: PHOTO")
-        super(SPR4,self).cameraPose()
+        super(LoCoQuad,self).cameraPose()
         self.camera.takePic()
-        super(SPR4,self).stand()
+        super(LoCoQuad,self).stand()
         self.state = mbl_bots.EXPLORE
 
 
 
     def close(self, signal, frame):
-        print("\nTurning off SPR4 Activity...\n")
+        print("\nTurning off LoCoQuad Activity...\n")
         GPIO.cleanup() 
         sys.exit(0)
 
@@ -205,4 +205,4 @@ class SPR4(Robot):
 #                                                             #   
 
 if __name__=='__main__':
-  SPR4 = SPR4()
+  LoCoQuad = LoCoQuad()

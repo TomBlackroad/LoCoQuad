@@ -45,52 +45,52 @@ class Robot(object):
 				time.sleep(moves[i].delay*speed)
 
 	def flat(self):
-		print("SPR4 is Flat")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_flat.movefile.txt", 1)    
+		print("LoCoQuad is Flat")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_flat.movefile.txt", 1)    
 
 	def stand(self):
-		print("SPR4 is Standing")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_stand.movefile.txt", 1)
+		print("LoCoQuad is Standing")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_stand.movefile.txt", 1)
 
 	def walkFront(self, speed=1):
-		print("SPR4 is Walking Forward")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_walkFront.movefile.txt", speed)
+		print("LoCoQuad is Walking Forward")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_walkFront.movefile.txt", speed)
 
 	def walkRight(self, speed=1):
-		print("SPR4 is Walking Right")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_walkFront.movefile.txt", speed)
+		print("LoCoQuad is Walking Right")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_walkFront.movefile.txt", speed)
 
 	def walkLeft(self, speed=1):
-		print("SPR4 is Walking Left")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_walkFront.movefile.txt", speed)
+		print("LoCoQuad is Walking Left")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_walkFront.movefile.txt", speed)
 
 	def walkBack(self, speed=1):
-		print("SPR4 is Walking Backwards")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_walkBack.movefile.txt", speed)
+		print("LoCoQuad is Walking Backwards")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_walkBack.movefile.txt", speed)
 
 	def turnRight(self, speed=1):
-		print("SPR4 is Turning Right")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_turnRight.movefile.txt", speed)
+		print("LoCoQuad is Turning Right")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_turnRight.movefile.txt", speed)
 
 	def turnLeft(self, speed=1):
-		print("SPR4 is Turning Left")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_turnLeft.movefile.txt", speed)
+		print("LoCoQuad is Turning Left")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_turnLeft.movefile.txt", speed)
 	
 	def sayHello(self):
-		print("SPR4 is Saying Hi!")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_sayHello.movefile.txt", 1)
+		print("LoCoQuad is Saying Hi!")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_sayHello.movefile.txt", 1)
 
 	def cameraPose(self):
-		print("SPR4 ready to take Picture")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_cameraPose.movefile.txt", 1)
+		print("LoCoQuad ready to take Picture")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_cameraPose.movefile.txt", 1)
 
 	def swing(self):
-		print("SPR4 is Swinging")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_swing.movefile.txt", 1)	
+		print("LoCoQuad is Swinging")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_swing.movefile.txt", 1)	
 
 	def shake(self):
-		print("SPR4 is Shaking")
-		self.executeMove("/home/pi/SPR4/SPR4_code/SPR4_shake.movefile.txt", 1)	
+		print("LoCoQuad is Shaking")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_shake.movefile.txt", 1)	
 
 	def move(self, code):
 		moves = {
