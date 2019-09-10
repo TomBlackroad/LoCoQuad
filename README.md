@@ -27,6 +27,8 @@ Very soon LoCoQuad would be availble online!
 
 # 3. Building your own LoCoQuad Robot
 
+https://www.thingiverse.com/thing:3853722
+
 Build your own LoCoQuad Robot (You can follow this instructions: thingeverse.com and this tutorial: youtube.com )
 
 Once ready, burn your 32 GB SD card whith the following image: link to repository...
