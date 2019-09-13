@@ -62,21 +62,28 @@ class LoCoQuad(Robot):
         self.state = mbl_bots.REST
         time.sleep(1)
 
+
+
+
 #=============================================================================
 # REST STATE
 #=============================================================================
     def REST(self):
         print("CURRENT STATE: REST")
         start_time = time.time()
-        while ((time.time()-start_time)<25):
+        while ((time.time()-start_time)<45):
             if(super(LoCoQuad,self).detectCatch(self.imu)):
-                for i in range(5):
+                for i in range(3):
                     super(LoCoQuad,self).shake()
                 break
             else:
-                time.sleep(0.5)
+                time.sleep(0.2)
         time.sleep(1)
         self.state = mbl_bots.EXPLORE
+
+
+
+
 
 #=============================================================================
 # EXPLORE STATE & FSM
@@ -93,6 +100,8 @@ class LoCoQuad(Robot):
 
     def EXPLORE(self):
         print("CURRENT STATE: EXPLORE")
+        super(LoCoQuad,self).flat()
+        time.sleep(1)
         super(LoCoQuad,self).stand()
         #EXPLORING FiniteStateMachine
         while(self.state == mbl_bots.EXPLORE):
@@ -102,11 +111,10 @@ class LoCoQuad(Robot):
     def exploreGetData(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: DATA ACQUISITION")
-        self.distance = utils.getDistance()
-        self.lastIMU = self.currentIMU
-        self.currentIMU = self.imu.getImuRawData()
-
-        self.exploreState = mbl_bots.PROCESSDATA
+        #self.distance = utils.getDistance()
+        #self.lastIMU = self.currentIMU
+        #self.currentIMU = self.imu.getImuRawData()
+        self.exploreState = mbl_bots.MOVE
 
     def exploreProcessData(self):
         print("CURRENT STATE: EXPLORE")
@@ -132,7 +140,25 @@ class LoCoQuad(Robot):
     def exploreMove(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: MOVING")
-        super(LoCoQuad,self).move(self.movesCode)
+        #super(LoCoQuad,self).move(self.movesCode)
+        start_time = time.time()
+        pose_count = 0
+        while ((time.time()-start_time)<60):
+            if(super(LoCoQuad,self).isBalanced(self.imu)):
+                super(LoCoQuad,self).balancePos(pose_count)
+            else:
+                super(LoCoQuad,self).balancePos(pose_count)
+            if (pose_count > 10):
+                pose_count = 0 
+            else:    
+                pose_count = pose_count + 1
+            time.sleep(0.5)
+        super(LoCoQuad,self).stand()
+        time.sleep(3)
+        super(LoCoQuad,self).walkFront()
+        super(LoCoQuad,self).walkFront()
+        super(LoCoQuad,self).walkFront()
+        super(LoCoQuad,self).walkFront()
         self.exploreState = mbl_bots.GETDATA
 
     def exploreReconTurn(self):
