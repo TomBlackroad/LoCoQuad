@@ -142,23 +142,25 @@ class LoCoQuad(Robot):
         print("CURRENT SUBSTATE: MOVING")
         #super(LoCoQuad,self).move(self.movesCode)
         start_time = time.time()
-        pose_count = 0
         while ((time.time()-start_time)<60):
-            if(super(LoCoQuad,self).isBalanced(self.imu)):
-                super(LoCoQuad,self).balancePos(pose_count)
-            else:
-                super(LoCoQuad,self).balancePos(pose_count)
-            if (pose_count >= 10):
-                pose_count = 0 
-            else:    
-                pose_count = pose_count + 1
-            time.sleep(0.5)
-        super(LoCoQuad,self).stand()
-        time.sleep(3)
-        super(LoCoQuad,self).walkFront()
-        super(LoCoQuad,self).walkFront()
-        super(LoCoQuad,self).walkFront()
-        super(LoCoQuad,self).walkFront()
+            super(LoCoQuad,self).walkFront()    
+        #pose_count = 0
+        # while ((time.time()-start_time)<60):
+        #     if(super(LoCoQuad,self).isBalanced(self.imu)):
+        #         super(LoCoQuad,self).balancePos(pose_count)
+        #     else:
+        #         super(LoCoQuad,self).balancePos(pose_count)
+        #     if (pose_count >= 11):
+        #         pose_count = 0 
+        #     else:    
+        #         pose_count = pose_count + 1
+        #     time.sleep(0.5)
+        # super(LoCoQuad,self).stand()
+        # time.sleep(3)
+        # super(LoCoQuad,self).walkFront()
+        # super(LoCoQuad,self).walkFront()
+        # super(LoCoQuad,self).walkFront()
+        # super(LoCoQuad,self).walkFront()
         self.exploreState = mbl_bots.GETDATA
 
     def exploreReconTurn(self):
