@@ -148,7 +148,7 @@ class LoCoQuad(Robot):
                 super(LoCoQuad,self).balancePos(pose_count)
             else:
                 super(LoCoQuad,self).balancePos(pose_count)
-            if (pose_count > 10):
+            if (pose_count >= 10):
                 pose_count = 0 
             else:    
                 pose_count = pose_count + 1
