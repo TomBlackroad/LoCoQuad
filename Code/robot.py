@@ -49,8 +49,8 @@ class Robot(object):
 		if(count*2<=len(moves)):
 			self.moveAcc(moves[count*2].actuator, moves[count*2].pos)
 			self.moveAcc(moves[count*2+1].actuator, moves[count*2+1].pos)
-			if(moves[i].delay > 0.0):
-				time.sleep(moves[i].delay*speed)
+			#if(moves[i].delay > 0.0):
+			#	time.sleep(moves[i].delay*speed)
 
 	def flat(self):
 		print("LoCoQuad is Flat")
@@ -101,7 +101,7 @@ class Robot(object):
 		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_shake.movefile.txt", 1)	
 
 	def balancePos(self, count, correction=0):
-		print("LoCoQuad is Shaking")
+		print("LoCoQuad is balancing")
 		self.executeMoveOBO("/home/pi/LoCoQuad/Code/LoCoQuad_balance.movefile.txt", 1, count, correction)	
 
 
