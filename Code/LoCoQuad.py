@@ -121,7 +121,7 @@ class LoCoQuad(Robot):
         print("CURRENT SUBSTATE: DATA PROCESSING")
         if(self.distance < 5):
             self.movesCode = mbl_bots.WB
-        elif(self.distance > 30):
+        elif(self.distance > 15):
             self.movesCode = mbl_bots.WF
         else:
             #if(randint(0,1) == 1): 
