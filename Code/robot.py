@@ -67,8 +67,6 @@ class Robot(object):
 	def walkRight(self, speed=1):
 		print("LoCoQuad is Walking Right")
 		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_walkFront.movefile.txt", speed)
-		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_walkFront.movefile.txt", speed)
-		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_walkFront.movefile.txt", speed)
 
 	def walkLeft(self, speed=1):
 		print("LoCoQuad is Walking Left")
@@ -80,6 +78,8 @@ class Robot(object):
 
 	def turnRight(self, speed=1):
 		print("LoCoQuad is Turning Right")
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_turnRight.movefile.txt", speed)
+		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_turnRight.movefile.txt", speed)
 		self.executeMove("/home/pi/LoCoQuad/Code/LoCoQuad_turnRight.movefile.txt", speed)
 
 	def turnLeft(self, speed=1):
