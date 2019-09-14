@@ -111,15 +111,15 @@ class LoCoQuad(Robot):
     def exploreGetData(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: DATA ACQUISITION")
-        #self.distance = utils.getDistance()
-        #self.lastIMU = self.currentIMU
-        #self.currentIMU = self.imu.getImuRawData()
-        self.exploreState = mbl_bots.MOVE
+        self.distance = utils.getDistance()
+        self.lastIMU = self.currentIMU
+        self.currentIMU = self.imu.getImuRawData()
+        self.exploreState = mbl_bots.PROCESSDATA
 
     def exploreProcessData(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: DATA PROCESSING")
-        if(self.distance < 10):
+        if(self.distance < 5):
             self.movesCode = mbl_bots.WB
         elif(self.distance > 30):
             self.movesCode = mbl_bots.WF
@@ -140,10 +140,11 @@ class LoCoQuad(Robot):
     def exploreMove(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: MOVING")
-        #super(LoCoQuad,self).move(self.movesCode)
-        start_time = time.time()
-        while ((time.time()-start_time)<60):
-            super(LoCoQuad,self).walkFront()    
+        super(LoCoQuad,self).move(self.movesCode)
+        super(LoCoQuad,self).move(self.movesCode)
+        #start_time = time.time()
+        #while ((time.time()-start_time)<60):
+        #    super(LoCoQuad,self).walkFront()    
         #pose_count = 0
         # while ((time.time()-start_time)<60):
         #     if(super(LoCoQuad,self).isBalanced(self.imu)):
