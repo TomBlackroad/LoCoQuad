@@ -54,10 +54,10 @@ class LoCoQuad(Robot):
         #Distance Sensor Pins SetUp
         #GPIO.setup(mbl_bots.TRIG, GPIO.OUT)
         #GPIO.setup(mbl_bots.ECHO, GPIO.IN)
-        #self.lastIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
-        #self.currentIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
+        self.lastIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
+        self.currentIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
         self.camera = Cam()
-        #self.imu = IMU(self.bus)
+        self.imu = IMU(self.busIMU)
         #self.distance = -1
         signal.signal(signal.SIGINT, self.close)
         self.state = mbl_bots.REST
