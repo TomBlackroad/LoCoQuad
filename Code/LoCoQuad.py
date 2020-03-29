@@ -51,8 +51,9 @@ class LoCoQuad(Robot):
         print("CURRENT STATE: INIT")
         # use Raspberry Pi board pin numbers
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(mbl_bots.TRIG, GPIO.OUT)
-        GPIO.setup(mbl_bots.ECHO, GPIO.IN)
+        #Distance Sensor Pins SetUp
+        #GPIO.setup(mbl_bots.TRIG, GPIO.OUT)
+        #GPIO.setup(mbl_bots.ECHO, GPIO.IN)
         self.lastIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
         self.currentIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
         self.camera = Cam()
