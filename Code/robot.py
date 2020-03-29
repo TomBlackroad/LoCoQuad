@@ -15,7 +15,7 @@ class Robot(object):
 	def __init__(self, file):
 		super(Robot, self).__init__()
 		(self.actuators, self.sensors) = utils.file2bot(file, mbl_bots.BOTH)
-		self.busIMU = smbus.SMBus(4)
+		self.busIMU = smbus.SMBus(1)
 		self.busDriver = smbus.SMBus(3)
 		self.pwm = PCA9685(self.busDriver, 0x40, debug=False)
 		self.pwm.setPWMFreq(50)
