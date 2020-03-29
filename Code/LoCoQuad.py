@@ -200,6 +200,7 @@ class LoCoQuad(Robot):
 
 
     def close(self, signal, frame):
+        self.camera.close()
         print("\nTurning off LoCoQuad Activity...\n")
         GPIO.cleanup() 
         sys.exit(0)
