@@ -15,9 +15,8 @@ class Robot(object):
 	def __init__(self, file):
 		super(Robot, self).__init__()
 		(self.actuators, self.sensors) = utils.file2bot(file, mbl_bots.BOTH)
-		self.busIMU = smbus.SMBus(1)
-		self.busDriver = smbus.SMBus(3)
-		self.pwm = PCA9685(self.busDriver, 0x40, debug=False)
+		self.bus = smbus.SMBus(1)
+		self.pwm = PCA9685(self.bus, 0x40, debug=False)
 		self.pwm.setPWMFreq(50)
 		#print("My name is: ", self.actuators[0].name)
 		self.names_acc = [self.actuators[i].name for i in range(len(self.actuators))]

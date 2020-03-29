@@ -57,7 +57,7 @@ class LoCoQuad(Robot):
         self.lastIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
         self.currentIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
         self.camera = Cam()
-        self.imu = IMU(self.busIMU)
+        self.imu = IMU(self.bus)
         #self.distance = -1
         signal.signal(signal.SIGINT, self.close)
         self.state = mbl_bots.REST

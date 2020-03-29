@@ -21,12 +21,11 @@ class IMU:
 	# GYRO_ZOUT_H  = 0x47
 
 	def __init__(self, bus):
-		#bus = smbus.SMBus(1)    # or bus = smbus.SMBus(0) for older version boards
+		#bus = smbus.SMBus(3)    # or bus = smbus.SMBus(0) for older version boards
 		self.bus = bus
 		self.Device_Address = 0x68   # MPU6050 device address
 		self.MPU_Init()
 		print (" Reading Data of Gyroscope and Accelerometer")
-
 
 
 	def MPU_Init(self):
@@ -44,6 +43,7 @@ class IMU:
 
 		#Write to interrupt enable register
 		self.bus.write_byte_data(self.Device_Address, mbl_bots.INT_ENABLE, 1)
+
 
 	def read_raw_data(self, addr):
 		#Accelero and Gyro value are 16-bit
