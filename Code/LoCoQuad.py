@@ -54,11 +54,11 @@ class LoCoQuad(Robot):
         #Distance Sensor Pins SetUp
         #GPIO.setup(mbl_bots.TRIG, GPIO.OUT)
         #GPIO.setup(mbl_bots.ECHO, GPIO.IN)
-        self.lastIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
-        self.currentIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
+        #self.lastIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
+        #self.currentIMU = [0.0,0.0,0.0,0.0,0.0,0.0]
         self.camera = Cam()
-        self.imu = IMU(self.bus)
-        self.distance = -1
+        #self.imu = IMU(self.bus)
+        #self.distance = -1
         signal.signal(signal.SIGINT, self.close)
         self.state = mbl_bots.REST
         time.sleep(1)
@@ -120,13 +120,14 @@ class LoCoQuad(Robot):
     def exploreProcessData(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: DATA PROCESSING")
-        if(self.distance < 5):
-            self.movesCode = mbl_bots.WB
-        elif(self.distance > 15):
-            self.movesCode = mbl_bots.WF
-        else:
+        time.sleep(3)
+        #if(self.distance < 5):
+        #    self.movesCode = mbl_bots.WB
+        #elif(self.distance > 15):
+        #    self.movesCode = mbl_bots.WF
+        #else:
             #if(randint(0,1) == 1): 
-            self.movesCode = mbl_bots.TR
+            #self.movesCode = mbl_bots.TR
             #else: 
             #    self.movesCode = mbl_bots.TL
         
@@ -141,11 +142,11 @@ class LoCoQuad(Robot):
     def exploreMove(self):
         print("CURRENT STATE: EXPLORE")
         print("CURRENT SUBSTATE: MOVING")
-        super(LoCoQuad,self).move(self.movesCode)
-        super(LoCoQuad,self).move(self.movesCode)
-        #start_time = time.time()
-        #while ((time.time()-start_time)<60):
-        #    super(LoCoQuad,self).walkFront()    
+        #super(LoCoQuad,self).move(self.movesCode)
+        #super(LoCoQuad,self).move(self.movesCode)
+        start_time = time.time()
+        while ((time.time()-start_time)<60):
+            super(LoCoQuad,self).walkFront()    
         #pose_count = 0
         # while ((time.time()-start_time)<60):
         #     if(super(LoCoQuad,self).isBalanced(self.imu)):
