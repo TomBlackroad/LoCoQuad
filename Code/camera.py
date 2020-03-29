@@ -7,7 +7,7 @@ class Cam(object):
 		self.camera = PiCamera()
 		self.camera.resolution = (640, 480)
 		self.camera.rotation = 180
-		self.camera.framerate = 32
+		self.camera.framerate = 60
 	
 	def takePic(self):
 		self.camera.start_preview()
