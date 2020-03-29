@@ -148,7 +148,8 @@ class LoCoQuad(Robot):
         start_time = time.time()
         while ((time.time()-start_time)<30):
             super(LoCoQuad,self).walkFront()
-        self.camera.stopVideo()    
+        self.camera.endVideo()
+        time.sleep(10)    
         #pose_count = 0
         # while ((time.time()-start_time)<60):
         #     if(super(LoCoQuad,self).isBalanced(self.imu)):
@@ -167,7 +168,6 @@ class LoCoQuad(Robot):
         # super(LoCoQuad,self).walkFront()
         # super(LoCoQuad,self).walkFront()
         self.exploreState = mbl_bots.GETDATA
-        self.state = PHOTO
 
     def exploreReconTurn(self):
         print("Not implemented...")
