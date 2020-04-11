@@ -145,8 +145,9 @@ class LoCoQuad(Robot):
         #super(LoCoQuad,self).move(self.movesCode)
         #super(LoCoQuad,self).move(self.movesCode)
         self.camera.startVideo()
+        time.sleep(6)
         start_time = time.time()
-        while ((time.time()-start_time)<20):
+        while ((time.time()-start_time)<40):
             super(LoCoQuad,self).walkFront()
         self.camera.endVideo()
         time.sleep(10)    
