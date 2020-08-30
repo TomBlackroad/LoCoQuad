@@ -1,14 +1,17 @@
 import cv2
+import sys
  
 # Opens the Video file
-cap= cv2.VideoCapture('/home/mbl/Documents/LoCoQuad/Code/Captures/2020-03-29--22-05-46.mp4')
-i=0
+cap= cv2.VideoCapture(sys.argv[1])
+i=1
 while(cap.isOpened()):
     ret, frame = cap.read()
     if ret == False:
         break
-    cv2.imwrite('kang'+str(i)+'.jpg',frame)
+    location = str(sys.argv[2]) + 'frame_' + str(i) + '.jpg'
+    cv2.imwrite(location, frame)
     i+=1
  
+print("\/\DONE/\/")
 cap.release()
 cv2.destroyAllWindows()
